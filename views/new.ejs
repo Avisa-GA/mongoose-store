@@ -22,7 +22,7 @@
             <legend>ITEM INFORMATION</legend>
               <!-- name -->
               <label for="name">NAME</label>
-              <input type="text" name="name"/>
+              <input type="text" name="name" placeholder="Enter name"/>
               <!-- price -->
               <label for="price">PRICE</label>
               <input type="number" name="price" placeholder="Enter price">
@@ -33,7 +33,7 @@
               out of stock: <input type="checkbox" name="qty" /><br />
               <!-- image -->
               
-              <label for="img">IMAGE</label>
+              <label for="img" id="imageInput">IMAGE</label>
               <input type="file" name="img" accept="image/png, image/jpg"/>
               
           </fieldset>
@@ -44,7 +44,7 @@
               <!-- biography -->
               <label for="description">DESCRIPTION</label>
               <!-- textarea for larger bodies of text -->
-              <textarea name="description" placeholder="Tell us about your item here !"></textarea>
+              <textarea name="description" placeholder="Tell us about your item here.."></textarea>
           </fieldset>
           <!-- submit button -->
           <input type="submit" value="ADD ITEM">

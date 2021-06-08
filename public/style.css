@@ -21,12 +21,7 @@
     margin: auto;
     margin-left: 10%;
     display: flex;
-    padding-left: 25%;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px #ddd,
-                -1px -1px 10px #ddd,
-                1px -1px 10px #ddd,
-                -1px 1px 10px #ddd;
+    padding-left: 20%;
   }
   .sidebar {
     /* width: 50%; */
@@ -81,6 +76,7 @@
     border: 1px solid var(--light-green);
     border-radius: 5px; 
   }
+
   
   input:focus, textarea:focus {
     /* the outline property selects the default blue border that shows up on inputs. giving it a value of 0 gets rid of it */
