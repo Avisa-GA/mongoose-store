@@ -9,6 +9,7 @@ const app = express()
 const db = mongoose.connection
 const path = require('path')
 require('dotenv').config()
+const productSeed = require('./models/productSeed.js')
 
 //___________________
 //Port
@@ -61,33 +62,33 @@ db.on('disconnected', () => console.log('mongod disconnected'));
 // Routes
 //___________________
 
-app.get('/products/seed', (req, res) => {
+/* app.get('/products/seed', (req, res) => {
 
-    Book.deleteMany({}, (err, allBooks) => {})
-    Book.create(bookSeed, (err, data) => {
+    Product.deleteMany({}, (err, allBooks) => {})
+    Product.create(productSeed, (err, data) => {
         res.redirect('/products')
     })
       
-});
+}); */
 
 // ROOT
-// app.get('/' , (req, res) => {
-//     res.send('Hello World!');
-//   });
+app.get('/' , (req, res) => {
+    res.send('Welcome to mongoose store app!');
+  });
 
-// //  INDEX
-// app.get('/products', (req, res) => {
-//   Product.find({}, (error, foundProducts) => {
-//       res.render('index.ejs', {
-//           allProducts: foundProducts,
-//       })
-//   })
-// })
+//  INDEX
+app.get('/products', (req, res) => {
+     Product.find({}, (error, allProducts) => {
+         res.render('index.ejs', {
+             products: allProducts,
+         })
+     })
+})
 
-// // NEW 
-// app.get('/books/new', (req, res) => {
-//     res.render('new.ejs')
-// })
+// NEW 
+app.get('/products/new', (req, res) => {
+    res.render('new.ejs')
+})
 
 
 // // DELETE
@@ -122,7 +123,10 @@ app.post('/products', (req, res) => {
     } else {
         req.body.completed = false
     }
-        res.send(req.body)
+    
+    Product.create(req.body, (error, createdBook) => {
+        res.send(createdBook)
+    })
   })
 
 //   // SHOW

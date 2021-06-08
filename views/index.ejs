@@ -13,15 +13,15 @@
     <div class="container">
         <section>
 
-            <% for(let i = 0; i < allProducts.length; i++) { %>
+            <% for(let i = 0; i < products.length; i++) { %>
 
             <div class="card" style="width: 18rem;">
                 <a href="/products/<%= i%>">
-                <img src="<%= allProducts[i].img%>" class="card-img-top" alt="Product Image" width="150">
+                <img src="<%= products[i].img%>" class="card-img-top" alt="Product Image" width="150">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title"><%= allProducts[i].name%></h5>
-                    <p>Price: <%= allProducts[i].price%></p>
+                    <h5 class="card-title"><%= products[i].name%></h5>
+                    <p>Price: <%= products[i].price%></p>
                 </div>
             </div>
             <br>
@@ -29,7 +29,7 @@
 
         </section>
     </div>
-    <%= console.log(allProducts)%>
+    <%= console.log(products)%>
 </body>
 
 </html>
