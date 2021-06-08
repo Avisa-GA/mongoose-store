@@ -16,10 +16,12 @@
   
   /* CONTAINERS */
   .container {
-    width: 80vw;
-    height: 70vw;
-    margin: 50px auto;
+    /* width: 80vw;
+    height: 70vw; */
+    margin: auto;
+    margin-left: 10%;
     display: flex;
+    padding-left: 25%;
     border-radius: 10px;
     box-shadow: 1px 1px 10px #ddd,
                 -1px -1px 10px #ddd,
@@ -27,14 +29,14 @@
                 -1px 1px 10px #ddd;
   }
   .sidebar {
-    width: 50%;
+    /* width: 50%; */
     background: url('assets/images/acnh.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px 0 0 10px;
   }
   .registration {
-    width: 50%;
+    /* width: 100%; */
     background: #f9f9f9;
     border-radius: 0 10px 10px 0;
     padding: 15px;

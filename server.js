@@ -47,6 +47,7 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.set('view engine', 'ejs');
 //use method override
 app.use(methodOverride('_method'))
+app.use('/static', express.static('public'))
 
 // Perform CRUD on our model
 // require the model
@@ -105,6 +106,15 @@ app.post('/products', (req, res) => {
     Product.create(req.body, (error, createdProduct) => {
         res.redirect('/products')
     })
+  })
+
+//  EDIT
+  app.get('/products/:id/edit', (req, res) => {
+      Product.findById(req.params.id, (error, foundBook) => {
+          res.render('edit.ejs', {
+              product: foundBook,
+          })
+      })
   })
 
   // SHOW
