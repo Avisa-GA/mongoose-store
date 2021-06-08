@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('./partials/head.ejs') %>
+</head>
+
+<body>
+    <div class="headline">
+        <h2 style="color:teal">Product Show Page</h2>
+        <a href="/products" class="button" style="color:teal">Back</a>
+    </div>
+    
+    <div class="container">
+        <section>
+            <!-- DELETE ADD HERE -->
+            <td height='100' id='element'>
+                <form action="/pokemon/<%= x %>?_method=DELETE" method="POST" style="padding: 0">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <button><a href="/pokemon/<%= x %>/edit" style="padding: 0">EDIT</a></button>
+        </section>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>
+                    <%= product.name%>
+                </td>
+                <td>
+                    <img src="" alt="Product image" height='150' width='150'>
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+
+                <td></td>
+              
+
+            </tr>
+            <tr>
+                <th>Price</th>
+              
+                <td></td>
+                
+            </tr>
+        </table>
+
+    </div>
+</body>
+
+</html>

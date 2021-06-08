@@ -65,8 +65,10 @@ app.get('/' , (req, res) => {
 
 //   Setup our Routers/Controller code
 app.get('/products', (req, res) => {
-  Product.find({}, (error, foundProduct) => {
-      res.send(foundProduct)
+  Product.find({}, (error, foundProducts) => {
+      res.render('index.ejs', {
+          allProducts: foundProducts,
+      })
   })
 })
 
@@ -74,8 +76,12 @@ app.get('/products', (req, res) => {
 // Show
 app.get('/products/:id', (req, res) => {
 	Product.findById(req.params.id, (error, foundProduct) => {
-		res.send(foundProduct);
+		res.render('show.ejs', {
+            product: foundProduct,
+            x: req.params.id
+        })
 	});
+    // res.redirect('/products')
 });
 
 // DELETE
@@ -85,6 +91,9 @@ app.delete('/products/:id', (req, res) => {
     })
 })
 
+app.get('/product/:id/edit', (req, res) => {
+    
+})
 
 // UPDATE 
 app.put('/products/:id', (req, res) => {
@@ -93,9 +102,12 @@ app.put('/products/:id', (req, res) => {
         req.body,
         {new: true},
         (error, updatedProduct) => {
-            res.send(updatedProduct)
+            res.render('edit.ejs', {
+                product: updatedProduct
+            })
         }
     )
+    res.redirect('/products')
 })
 // Create Route/Controller
 app.post('/products', (req, res) => {
