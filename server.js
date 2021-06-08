@@ -55,6 +55,7 @@ db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
 db.on('connected', () => console.log('mongod connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongod disconnected'));
 
+
 //___________________
 // Routes
 //___________________
@@ -68,6 +69,7 @@ app.get('/products', (req, res) => {
   Product.find({}, (error, foundProducts) => {
       res.render('index.ejs', {
           allProducts: foundProducts,
+
       })
   })
 })
@@ -76,6 +78,7 @@ app.get('/products', (req, res) => {
 // Show
 app.get('/products/:id', (req, res) => {
 	Product.findById(req.params.id, (error, foundProduct) => {
+        let item = foundProduct._id
 		res.render('show.ejs', {
             product: foundProduct,
             x: req.params.id
