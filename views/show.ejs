@@ -13,12 +13,12 @@
     
     <div class="container">
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="<%= product.img%>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">name</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p>Price: </p>
-              <p>84 reamining</p>
+              <h5 class="card-title"><%= product.name%></h5>
+              <p class="card-text"><%= product.description%></p>
+              <p>Price: <%=product.price%></p>
+              <p><%= product.qty%></p>
               <button type="button" class="btn btn-primary">BUY</button> <br>
               <a href="#" class="btn btn-primary">Edit this product</a> <br>
               <button type="button" class="btn btn-danger">Delete</button> <br>

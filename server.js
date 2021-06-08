@@ -91,29 +91,7 @@ app.get('/products/new', (req, res) => {
 })
 
 
-// // DELETE
-// app.delete('/products/:id', (req, res) => {
-//     Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
-//         res.send(deletedProduct)
-//     })
-// })
 
-
-
-// // UPDATE 
-// app.put('/products/:id', (req, res) => {
-//     Product.findByIdAndUpdate(
-//         req.params.id,
-//         req.body,
-//         {new: true},
-//         (error, updatedProduct) => {
-//             res.render('edit.ejs', {
-//                 product: updatedProduct
-//             })
-//         }
-//     )
-//     res.redirect('/products')
-// })
 
 // CREATE
 app.post('/products', (req, res) => {
@@ -124,22 +102,21 @@ app.post('/products', (req, res) => {
         req.body.completed = false
     }
     
-    Product.create(req.body, (error, createdBook) => {
-        res.send(createdBook)
+    Product.create(req.body, (error, createdProduct) => {
+        res.redirect('/products')
     })
   })
 
-//   // SHOW
-// app.get('/products/:id', (req, res) => {
+  // SHOW
+app.get('/products/:id', (req, res) => {
     
-// 	Product.findById(req.params.id, (error, foundProduct) => {
+	Product.findById(req.params.id, (error, foundProduct) => {
        
-// 		res.render('show.ejs', {
-//             product: foundProduct,
-//             x: req.params.id
-//         })
-// 	})
-// });
+		res.render('show.ejs', {
+            product: foundProduct,
+        })
+	})
+});
 
 //___________________
 //Listener

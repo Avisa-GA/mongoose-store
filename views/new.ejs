@@ -2,22 +2,53 @@
 <html lang="en">
 
 <head>
-    <%- include ('./partials/head.ejs') %>
+    <%- include ('./partials/secondHead.ejs') %>
+    <title>Add new Item page</title>
 </head>
 
 <body>
-
+    <!-- ============= CONTAINER ============== -->
     <div class="container">
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-            
-           
+      <!-- sidebar -->
+      <div class="sidebar"></div>
+      <!-- registration container -->
+      <div class="newItem">
+        <h1>Add New Item</h1>
+        <!-- START FORM -->
+        <form action="/products" method="POST">
+          <!-- fieldset for account info -->
+          <fieldset class="account-info">
+            <!-- legend for account info -->
+            <legend>ITEM INFORMATION</legend>
+              <!-- name -->
+              <label for="name">NAME</label>
+              <input type="text" name="name"/>
+              <!-- price -->
+              <label for="price">PRICE</label>
+              <input type="number" name="price" placeholder="Enter price">
+              below zero: <input type="checkbox" name="price" /><br />
+              <!-- quantity -->
+              <label for="qty">QUANTITY</label>
+              <input type="number" name="qty" placeholder="Enter quantity"/>
+              out of stock: <input type="checkbox" name="qty" /><br />
+              <!-- image -->
+              
+              <label for="img">IMAGE</label>
+              <input type="file" name="img" accept="image/png, image/jpg"/>
+          </fieldset>
+          <!-- fieldset for profile info -->
+          <fieldset class="profile-info">
+            <!-- legend for profile info -->
+            <!-- <legend></legend> -->
+              <!-- biography -->
+              <label for="description">DESCRIPTION</label>
+              <!-- textarea for larger bodies of text -->
+              <textarea name="description" placeholder="Tell us about your item here !"></textarea>
+          </fieldset>
+          <!-- submit button -->
+          <input type="submit" value="ADD ITEM">
         </form>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

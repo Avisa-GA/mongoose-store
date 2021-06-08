@@ -1,0 +1,112 @@
+
+/* VARIABLES */
+:root {
+    --bright-orange: #F18963;
+    --light-orange: #f5ac91;
+    --bright-green: #A0BE73;
+    --light-green: #c6d8ab;
+    --purple: #B67D9A;
+  }
+  
+  /* GENERAL */
+  body {
+    background: #e9e9e9;
+    font-family: helvetica;
+  }
+  
+  /* CONTAINERS */
+  .container {
+    width: 80vw;
+    height: 70vw;
+    margin: 50px auto;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #ddd,
+                -1px -1px 10px #ddd,
+                1px -1px 10px #ddd,
+                -1px 1px 10px #ddd;
+  }
+  .sidebar {
+    width: 50%;
+    background: url('assets/images/acnh.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 0 0 10px;
+  }
+  .registration {
+    width: 50%;
+    background: #f9f9f9;
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  
+  /* ETC. DECORATION */
+  h1 {
+    font-family: 'Oswald';
+    font-weight: 500;
+    color: var(--bright-orange);
+    border-bottom: 2px solid var(--bright-green);
+  }
+  
+  /* FORMS */
+  
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+   legend {
+    padding: 0px 10px;
+    font-family: 'Oswald';
+    font-weight: 500;
+    color: var(--purple);
+  }
+  label {
+    font-family: 'Oswald';
+    font-weight: 200;
+    color: var(--bright-orange);
+    display: block;
+  } 
+  
+  input, textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--light-green);
+    border-radius: 5px; 
+  }
+  
+  input:focus, textarea:focus {
+    /* the outline property selects the default blue border that shows up on inputs. giving it a value of 0 gets rid of it */
+    /* outline: 0; */
+    outline: 1px solid transparent;
+    border: 1px solid var(--purple);
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: var(--bright-orange);
+    box-shadow: 2px 2px var(--light-green);
+    font-family: 'Oswald';
+    font-size: 1.3em;
+    color: whitesmoke;
+    border: 0px;
+    transition: 0.2s ease-in-out;
+  }
+  
+  input[type="submit"]:hover {
+    cursor: pointer; /* SHAPE IT LIKE FINGER */
+    background: var(--bright-green);
+    box-shadow: 2px 2px var(--light-orange);
+  }
+  
+  textarea {
+    resize: none;
+    height: 75px;
+  }
+  

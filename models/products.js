@@ -20,7 +20,8 @@ const productSchema = new Schema( {
           },
           completed: Boolean,
 
-        },  { timestamps: true })
+        }
+        )
         
 const Product = mongoose.model('Product', productSchema)
 
