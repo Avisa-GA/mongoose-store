@@ -12,39 +12,18 @@
     </div>
     
     <div class="container">
-        <section>
-            <!-- DELETE ADD HERE -->
-            <td height='100' id='element'>
-                <form action="/pokemon/<%= x %>?_method=DELETE" method="POST" style="padding: 0">
-                    <input type="submit" value="DELETE" />
-                </form>
-                <button><a href="/pokemon/<%= x %>/edit" style="padding: 0">EDIT</a></button>
-        </section>
-        <table>
-            <tr>
-                <th>Name</th>
-                <td>
-                    <%= product.name%>
-                </td>
-                <td>
-                    <img src="" alt="Product image" height='150' width='150'>
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-
-                <td></td>
-              
-
-            </tr>
-            <tr>
-                <th>Price</th>
-              
-                <td></td>
-                
-            </tr>
-        </table>
-
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">name</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p>Price: </p>
+              <p>84 reamining</p>
+              <button type="button" class="btn btn-primary">BUY</button> <br>
+              <a href="#" class="btn btn-primary">Edit this product</a> <br>
+              <button type="button" class="btn btn-danger">Delete</button> <br>
+            </div>
+          </div>
     </div>
 </body>
 

@@ -10,28 +10,26 @@
         <h1>Product Inventory Page</h1>
         <button><a href="/products/new" class="btn btn-secondary">Add New Item</a></button>
     </div>
- <section>
-    <div id='one'>
-        <table class="table" id='indexPage'>
-            <tbody>
-                <tr id='element'>
-                    <% for(let i = 0; i < allProducts.length; i++) { %>
+    <div class="container">
+        <section>
 
-                    <th id='element'>
-                        <a href="/products/<%= i %>">
-                            <label><%=  allProducts[i].name%></label>
-                            <img src="<%= allProducts[i].img%>" alt="Product Image" width='100' height='100'>
-                            <label>Price: <%=  allProducts[i].price%></label>
-                        </a>
-                    </th>
-                   
-                 <% } %>
-                </tr>
-            </tbody>
-        </table>
+            <% for(let i = 0; i < allProducts.length; i++) { %>
+
+            <div class="card" style="width: 18rem;">
+                <a href="/products/<%= i%>">
+                <img src="<%= allProducts[i].img%>" class="card-img-top" alt="Product Image" width="150">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><%= allProducts[i].name%></h5>
+                    <p>Price: <%= allProducts[i].price%></p>
+                </div>
+            </div>
+            <br>
+            <% } %>
+
+        </section>
     </div>
-</section>
-<%= console.log(allProducts)%>
+    <%= console.log(allProducts)%>
 </body>
 
 </html>

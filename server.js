@@ -64,27 +64,26 @@ app.get('/' , (req, res) => {
     res.send('Hello World!');
   });
 
-//   Setup our Routers/Controller code
+//  INDEX
 app.get('/products', (req, res) => {
   Product.find({}, (error, foundProducts) => {
       res.render('index.ejs', {
           allProducts: foundProducts,
-
       })
   })
 })
 
-// Index
-// Show
+
+// SHOW
 app.get('/products/:id', (req, res) => {
+    
 	Product.findById(req.params.id, (error, foundProduct) => {
-        let item = foundProduct._id
+       
 		res.render('show.ejs', {
             product: foundProduct,
             x: req.params.id
         })
-	});
-    // res.redirect('/products')
+	})
 });
 
 // DELETE
@@ -94,9 +93,7 @@ app.delete('/products/:id', (req, res) => {
     })
 })
 
-app.get('/product/:id/edit', (req, res) => {
-    
-})
+
 
 // UPDATE 
 app.put('/products/:id', (req, res) => {
@@ -112,7 +109,8 @@ app.put('/products/:id', (req, res) => {
     )
     res.redirect('/products')
 })
-// Create Route/Controller
+
+// CREATE
 app.post('/products', (req, res) => {
     Product.create(req.body, function(err, newProduct) {
         res.send(newProduct)
