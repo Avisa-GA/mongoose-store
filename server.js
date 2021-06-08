@@ -41,14 +41,15 @@ mongoose.connect(MONGODB_URI, {
 app.use(express.static('public'))
 
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
+app.use(express.urlencoded({ extended: true }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+app.set('view engine', 'ejs');
 //use method override
 app.use(methodOverride('_method'))
 
 // Perform CRUD on our model
 // require the model
-const Product = require('./models/product')
+const Product = require('./models/products')
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
@@ -59,63 +60,82 @@ db.on('disconnected', () => console.log('mongod disconnected'));
 //___________________
 // Routes
 //___________________
-//localhost:3000
-app.get('/' , (req, res) => {
-    res.send('Hello World!');
-  });
 
-//  INDEX
-app.get('/products', (req, res) => {
-  Product.find({}, (error, foundProducts) => {
-      res.render('index.ejs', {
-          allProducts: foundProducts,
-      })
-  })
-})
+app.get('/products/seed', (req, res) => {
 
-
-// SHOW
-app.get('/products/:id', (req, res) => {
-    
-	Product.findById(req.params.id, (error, foundProduct) => {
-       
-		res.render('show.ejs', {
-            product: foundProduct,
-            x: req.params.id
-        })
-	})
+    Book.deleteMany({}, (err, allBooks) => {})
+    Book.create(bookSeed, (err, data) => {
+        res.redirect('/products')
+    })
+      
 });
 
-// DELETE
-app.delete('/products/:id', (req, res) => {
-    Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
-        res.send(deletedProduct)
-    })
-})
+// ROOT
+// app.get('/' , (req, res) => {
+//     res.send('Hello World!');
+//   });
+
+// //  INDEX
+// app.get('/products', (req, res) => {
+//   Product.find({}, (error, foundProducts) => {
+//       res.render('index.ejs', {
+//           allProducts: foundProducts,
+//       })
+//   })
+// })
+
+// // NEW 
+// app.get('/books/new', (req, res) => {
+//     res.render('new.ejs')
+// })
+
+
+// // DELETE
+// app.delete('/products/:id', (req, res) => {
+//     Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
+//         res.send(deletedProduct)
+//     })
+// })
 
 
 
-// UPDATE 
-app.put('/products/:id', (req, res) => {
-    Product.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {new: true},
-        (error, updatedProduct) => {
-            res.render('edit.ejs', {
-                product: updatedProduct
-            })
-        }
-    )
-    res.redirect('/products')
-})
+// // UPDATE 
+// app.put('/products/:id', (req, res) => {
+//     Product.findByIdAndUpdate(
+//         req.params.id,
+//         req.body,
+//         {new: true},
+//         (error, updatedProduct) => {
+//             res.render('edit.ejs', {
+//                 product: updatedProduct
+//             })
+//         }
+//     )
+//     res.redirect('/products')
+// })
 
 // CREATE
 app.post('/products', (req, res) => {
-    Product.create(req.body, function(err, newProduct) {
-        res.send(newProduct)
-    })
+
+    if (req.body.completed === 'on') {
+        req.body.completed = true
+    } else {
+        req.body.completed = false
+    }
+        res.send(req.body)
   })
+
+//   // SHOW
+// app.get('/products/:id', (req, res) => {
+    
+// 	Product.findById(req.params.id, (error, foundProduct) => {
+       
+// 		res.render('show.ejs', {
+//             product: foundProduct,
+//             x: req.params.id
+//         })
+// 	})
+// });
 
 //___________________
 //Listener

@@ -10,8 +10,16 @@ const productSchema = new Schema( {
           name: String,
           description: String,
           img: String,
-          price: Number,
-          qty: Number
+          price: {
+              type: Number,
+              required: true
+          },
+          qty: {
+            type: Number,
+            required: true
+          },
+          completed: Boolean,
+
         },  { timestamps: true })
         
 const Product = mongoose.model('Product', productSchema)
