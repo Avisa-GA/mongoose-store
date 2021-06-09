@@ -15,7 +15,7 @@
       <div class="newItem">
         <h1>Edit Item</h1>
         <!-- START FORM -->
-        <form action="/products" method="POST">
+        <form action="/products/<%= product._id%>?_method=PUT" method="POST">
           <!-- fieldset for account info -->
           <fieldset class="account-info">
             <!-- legend for account info -->
@@ -26,11 +26,11 @@
               <!-- price -->
               <label for="price">PRICE</label>
               <input type="number" name="price" placeholder="Enter price" value="<%= product.price%>">
-              below zero: <input type="checkbox" name="price" /><br />
+              
               <!-- quantity -->
               <label for="qty">QUANTITY</label>
               <input type="number" name="qty" placeholder="Enter quantity" value="<%= product.qty%>"/>
-              out of stock: <input type="checkbox" name="qty" /><br />
+              
               <!-- image -->
               
               <label for="img">IMAGE</label>
@@ -44,7 +44,7 @@
               <!-- biography -->
               <label for="description">DESCRIPTION</label>
               <!-- textarea for larger bodies of text -->
-              <textarea name="description" placeholder="Tell us about your item here !"></textarea>
+              <textarea name="description" placeholder="Tell us about your item here !"><%= product.description%></textarea>
           </fieldset>
           <!-- submit button -->
           <input type="submit" value="ADD ITEM">

@@ -9,7 +9,7 @@ const app = express()
 const db = mongoose.connection
 const path = require('path')
 require('dotenv').config()
-const productSeed = require('./models/productSeed.js')
+const productsController = require('./controllers/products.js')
 
 //___________________
 //Port
@@ -48,10 +48,10 @@ app.set('view engine', 'ejs');
 //use method override
 app.use(methodOverride('_method'))
 app.use('/static', express.static('public'))
+app.use('/products', productsController)
 
 // Perform CRUD on our model
 // require the model
-const Product = require('./models/products')
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
@@ -63,70 +63,14 @@ db.on('disconnected', () => console.log('mongod disconnected'));
 // Routes
 //___________________
 
-/* app.get('/products/seed', (req, res) => {
 
-    Product.deleteMany({}, (err, allBooks) => {})
-    Product.create(productSeed, (err, data) => {
-        res.redirect('/products')
-    })
-      
-}); */
 
 // ROOT
 app.get('/' , (req, res) => {
     res.send('Welcome to mongoose store app!');
   });
 
-//  INDEX
-app.get('/products', (req, res) => {
-     Product.find({}, (error, allProducts) => {
-         res.render('index.ejs', {
-             products: allProducts,
-         })
-     })
-})
 
-// NEW 
-app.get('/products/new', (req, res) => {
-    res.render('new.ejs')
-})
-
-
-
-
-// CREATE
-app.post('/products', (req, res) => {
-
-    if (req.body.completed === 'on') {
-        req.body.completed = true
-    } else {
-        req.body.completed = false
-    }
-    
-    Product.create(req.body, (error, createdProduct) => {
-        res.redirect('/products')
-    })
-  })
-
-//  EDIT
-  app.get('/products/:id/edit', (req, res) => {
-      Product.findById(req.params.id, (error, foundBook) => {
-          res.render('edit.ejs', {
-              product: foundBook,
-          })
-      })
-  })
-
-  // SHOW
-app.get('/products/:id', (req, res) => {
-    
-	Product.findById(req.params.id, (error, foundProduct) => {
-       
-		res.render('show.ejs', {
-            product: foundProduct,
-        })
-	})
-});
 
 //___________________
 //Listener

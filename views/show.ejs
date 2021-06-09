@@ -13,18 +13,33 @@
     
     <div class="container">
         <div class="card" style="width: 18rem;">
-            <img src="<%= product.img%>" class="card-img-top" alt="product image">
+            <img src="#" class="card-img-top" alt="product image">
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
               <p class="card-text"><%= product.description%></p>
               <p>Price: <%=product.price%></p>
               <p>Qty: <%= product.qty%></p>
-              <button type="button" class="btn btn-primary">BUY</button> <br>
+             <!-- BUY BUTTON ACTION -->
+              <form action="/products/<%= product._id%>/buy/?_method=PUT" method="POST">
+                <input type="submit" class="btn btn-primary" name="BUY" value="<%= product.qty%>">
+            </form>
+              <!-- <button type="button" class="btn btn-primary" id="buy">BUY</button> <br> -->
               <a href="/products/<%= product._id%>/edit" class="btn btn-primary">Edit this product</a> <br>
-              <button type="button" class="btn btn-danger">Delete</button> <br>
+              <form style="margin-top: 2%;" action="/products/<%= product._id%>/?_method=DELETE" method="POST">
+                  <input type="submit" class="btn btn-danger" value="DELETE">
+              </form>
+              <!-- <button type="button" class="btn btn-danger">Delete</button> <br> -->
             </div>
           </div>
     </div>
+   <script>
+        // let itemAmount = items%>
+
+        // let handleBuy = document.getElementById('buy')
+        // handleBuy.addEventListener('click', function() {
+        //    console.log(itemAmount = itemAmount - 1)
+        // })
+    </script>
 </body>
 
 </html>
