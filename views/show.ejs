@@ -20,9 +20,16 @@
               <p>Price: <%=product.price%></p>
               <p>Qty: <%= product.qty%></p>
              <!-- BUY BUTTON ACTION -->
+    
               <form action="/products/<%= product._id%>/buy/?_method=PUT" method="POST">
-                <input type="submit" class="btn btn-primary" name="BUY" value="<%= product.qty%>">
-            </form>
+                <% if (product.qty > 0) { %>
+                <input type="submit" class="btn btn-primary" name="BUY" value="BUY">
+         
+            <%} else {%>
+                    <input type="text" name="BUY" value="OUT OF STOCK"> 
+              
+                <%}%>
+              </form>
               <!-- <button type="button" class="btn btn-primary" id="buy">BUY</button> <br> -->
               <a href="/products/<%= product._id%>/edit" class="btn btn-primary">Edit this product</a> <br>
               <form style="margin-top: 2%;" action="/products/<%= product._id%>/?_method=DELETE" method="POST">
