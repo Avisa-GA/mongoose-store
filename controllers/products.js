@@ -37,7 +37,6 @@ productsRouter.delete('/:id', (req, res) => {
     })
 })
 
-
 // UPDATE BUY BUTTON 
 productsRouter.put('/:id/buy', (req, res) => {
 
@@ -52,22 +51,9 @@ productsRouter.put('/:id/buy', (req, res) => {
     });
 });
 
-
-
 // UPDATE
 productsRouter.put('/:id', (req, res) => {
-    // reformat the completed property
-    if (req.body.qtyStock === 'on') {
-        req.body.qtyStock = true
-    } else {
-        req.body.qtyStock = false
-    }
-
-    if (req.body.priceStatus === 'on') {
-        req.body.priceStatus = true
-    } else {
-        req.body.priceStatus = false
-    }
+   
     // step 2: find the book in mongodb and update it with req.body
     Product.findByIdAndUpdate(req.params.id, req.body, {
         new: true
@@ -78,20 +64,10 @@ productsRouter.put('/:id', (req, res) => {
 })
 
 
+
+
 // CREATE
 productsRouter.post('/', (req, res) => {
-
-    if (req.body.qtyStock === 'on') {
-        req.body.qtyStock = true
-    } else {
-        req.body.qtyStock = false
-    }
-
-    if (req.body.priceStatus === 'on') {
-        req.body.priceStatus = true
-    } else {
-        req.body.priceStatus = false
-    }
 
     Product.create(req.body, (error, createdProduct) => {
         res.redirect('/products')
@@ -117,7 +93,6 @@ productsRouter.get('/:id', (req, res) => {
 
         res.render('show.ejs', {
             product: foundProduct,
-            
         })
     })
 });
