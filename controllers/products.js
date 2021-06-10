@@ -37,19 +37,6 @@ productsRouter.delete('/:id', (req, res) => {
     })
 })
 
-// UPDATE BUY BUTTON 
-productsRouter.put('/:id/buy', (req, res) => {
-
-    Product.findOneAndUpdate(req.params.id, {
-        $inc: {
-            qty: -1
-        }
-    }, {
-        new: true
-    }).then((results) => {
-        res.redirect(`/products/${req.params.id}`)
-    });
-});
 
 // UPDATE
 productsRouter.put('/:id', (req, res) => {
@@ -63,6 +50,19 @@ productsRouter.put('/:id', (req, res) => {
 
 })
 
+// UPDATE BUY BUTTON 
+productsRouter.put('/:id/buy', (req, res) => {
+
+    Product.findOneAndUpdate(req.params.id, {
+        $inc: {
+            qty: -1
+        }
+    }, {
+        new: true
+    }).then((results) => {
+        res.redirect(`/products/${req.params.id}`)
+    });
+});
 
 
 
@@ -94,6 +94,7 @@ productsRouter.get('/:id', (req, res) => {
         res.render('show.ejs', {
             product: foundProduct,
         })
+        console.log('product is : ' + foundProduct)
     })
 });
 
