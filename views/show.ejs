@@ -10,36 +10,38 @@
         <h2 style="color:teal">Product Show Page</h2>
         <a href="/products" class="button" style="color:teal">Back</a>
     </div>
-    
+
     <div class="container">
         <div class="card" style="width: 18rem;">
-            <img src="#" class="card-img-top" alt="product image">
+            <img src="<%= product.img%>" class="card-img-top" alt="product image">
             <div class="card-body">
-              <h5 class="card-title"><%= product.name%></h5>
-              <p class="card-text"><%= product.description%></p>
-              <p>Price: <%=product.price%></p>
-              <p>Qty: <%= product.qty%></p>
-             <!-- BUY BUTTON ACTION -->
-    
-              <form action="/products/<%= product._id%>/buy/?_method=PUT" method="POST">
-                <% if (product.qty > 0) { %>
-                <input type="submit" class="btn btn-primary" name="BUY" value="BUY">
-         
-            <%} else {%>
-                    <input type="text" name="BUY" value="OUT OF STOCK"> 
-              
-                <%}%>
-              </form>
-              <!-- <button type="button" class="btn btn-primary" id="buy">BUY</button> <br> -->
-              <a href="/products/<%= product._id%>/edit" class="btn btn-primary">Edit this product</a> <br>
-              <form style="margin-top: 2%;" action="/products/<%= product._id%>/?_method=DELETE" method="POST">
-                  <input type="submit" class="btn btn-danger" value="DELETE">
-              </form>
-              <!-- <button type="button" class="btn btn-danger">Delete</button> <br> -->
+                <h5 class="card-title"><%= product.name%></h5>
+                <p class="card-text"><%= product.description%></p>
+                <p>Price: <%= product.price%></p>
+                <p>Qty: <%= product.qty%></p>
+                <!-- BUY BUTTON ACTION -->
+
+                <form action="/products/<%= product._id%>/buy?_method=PUT" method="POST">
+
+                    <% let quantity = product.qty %>
+                    <% if (product.qty > 0) {%>
+
+                    <input style="margin-bottom: 2%;" type="submit" class="btn btn-primary" name="BUY" value="BUY <%= product.qty%>">
+
+                    <%} else {%>
+                          <p style="color: red;">OUT OF Stock</p>
+                    <%}%>
+                </form>
+                <!-- <button type="button" class="btn btn-primary" id="buy">BUY</button> <br> -->
+                <a href="/products/<%= product._id%>/edit" class="btn btn-primary">Edit this product</a> <br>
+                    <form style="margin-top: 2%;" action="/products/<%= product._id%>/?_method=DELETE" method="POST">
+                        <input type="submit" class="btn btn-danger" value="DELETE">
+                    </form>
+                    <!-- <button type="button" class="btn btn-danger">Delete</button> <br> -->
             </div>
-          </div>
+        </div>
     </div>
-   <script>
+    <script>
         // let itemAmount = items%>
 
         // let handleBuy = document.getElementById('buy')

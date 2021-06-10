@@ -6,14 +6,14 @@ const Product = require('../models/product.js')
 // SEED
 const productSeed = require('../models/productSeed.js')
 
-/* productsRouter.get('/products/seed', (req, res) => {
+productsRouter.get('/seed', (req, res) => {
 
     Product.deleteMany({}, (err, allBooks) => {})
     Product.create(productSeed, (err, data) => {
         res.redirect('/products')
     })
       
-}); */
+}); 
 
 //  INDEX
 productsRouter.get('/', (req, res) => {
@@ -117,6 +117,7 @@ productsRouter.get('/:id', (req, res) => {
 
         res.render('show.ejs', {
             product: foundProduct,
+            
         })
     })
 });
